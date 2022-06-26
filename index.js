@@ -20,9 +20,12 @@ client.on("messageCreate", async msg => {
       msg.reply("Hello World!");
       break;
     case "pp":
-      msg.channel.send("Here's your music!🐝"); //Replies to user command
       const music = await getMusic(msg.content.substring(2)); //fetches an URL from YTB API
-      const audio = ytdl(music, {filter: 'audioonly'});
+      const musicLink = `https://www.youtube.com/watch?v=${music.id.videoId}`;
+      const musicTitle = music.snippet.title;
+      const audio = ytdl(musicLink, {
+        filter: 'audioonly',
+        quality: 'lowestaudio'});
       const player = createAudioPlayer();
       const resource = createAudioResource(audio);
       const connection = joinVoiceChannel({
@@ -30,9 +33,15 @@ client.on("messageCreate", async msg => {
         guildId: msg.guild.id,
         adapterCreator: msg.guild.voiceAdapterCreator
     });
+    try{
       connection.subscribe(player);
       player.play(resource);
-      msg.channel.send(music); //send the music URL
+      msg.channel.send(`Now playing 🐝 ${musicTitle}
+      ${musicLink}`); //send the music URL
+    } catch (error) {
+      connection.destroy();
+      throw error;
+    }
       break;
     case "??":
       msg.channel.send("wait, I am still developing a help doc lol");
@@ -53,8 +62,8 @@ async function getMusic(keyword){
   // console.log("query", query);
 
   const res = await axios.get(query);
-
-  // console.log(`fetchlink: https://www.youtube.com/watch?v=${res.data.items.id.videoId}`);
-  // console.log(res.data.items[0].id.videoId);
-  return `https://www.youtube.com/watch?v=${res.data.items[0].id.videoId}`;
+  
+  const musicObj = res.data.items[0];
+  console.log(musicObj);
+  return res.data.items[0];
 }
