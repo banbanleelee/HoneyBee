@@ -57,7 +57,7 @@ module.exports = {
                 return message.channel.send(`🐝 I can't join the voice channel ${message.author}... try again?`);
             }
 
-            await message.channel.send(`🐝 Loading...`);
+            // await message.channel.send(`🐝 Loading...`);
 
             queue.addTrack(res.tracks[query.content - 1]);
 

@@ -1,7 +1,7 @@
 module.exports = {
-    name: 'empty',
-    aliases: ['e','清空'],
-    utilisation: '{prefix}empty',
+    name: 'clear',
+    aliases: ['c','清空'],
+    utilisation: '{prefix}clear',
     voiceChannel: true,
 
     async execute(client, message) {
@@ -9,7 +9,7 @@ module.exports = {
 
         if (!queue || !queue.playing) return message.channel.send(`🐝 I'm not playing any song ${message.author}...`);
 
-        if (!queue.tracks[0]) return message.channel.send(`🐝 No more song after this one...`);
+        // if (!queue.tracks[0]) return message.channel.send(`🐝 No more song after this one...`);
 
         await queue.clear();
 
