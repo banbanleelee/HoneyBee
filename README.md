@@ -1,7 +1,3 @@
-# honeyBee
-a discord bot
+# HONEY BEE MUSIC BOT
 
-## usage
-1. run npm i to install dependencies
-2. run node index.js to register the bot
-3. use 'pp' command to play your favorite music! e.g. ppmockingbird eminem
+use '~' and command to play your favorite music! e.g. ~p mockingbird eminem （tips: use the keyword you would put in the YouTube search bar!)
