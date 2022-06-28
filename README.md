@@ -4,7 +4,7 @@
 
 🐝 Discord link: https://discord.com/api/oauth2/authorize?client_id=990374096363716608&permissions=2182441984&scope=bot
 
-🐝 Commands
+🐝 Commands available in English and 中文
 <p>~clear | ~c | ~清空 </p>
 <p>~last | ~l | ~上一首 </p>
 <p>~loopqueue | ~lq | ~列表循环 </p>
